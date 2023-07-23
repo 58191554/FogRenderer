@@ -500,6 +500,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
 
     // type-specific parameters
     if (type == "ambient") {
+      std::cout << "LIGHT = AMBIENT" << endl;
       light.light_type = LightType::AMBIENT;
       XMLElement* e_color = get_element(e_light, "color");
       if (e_color) {
@@ -510,6 +511,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
         exit(EXIT_FAILURE);
       }
     } else if (type == "directional") {
+      std::cout << "LIGHT = DIRECTIONAL" << endl;
       light.light_type = LightType::DIRECTIONAL;
       XMLElement* e_color = get_element(e_light, "color");
       if (e_color) {
@@ -520,6 +522,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
         exit(EXIT_FAILURE);
       }
     } else if (type == "area") {
+      std::cout << "LIGHT = AREA" << endl;
       light.light_type = LightType::AREA;
       XMLElement* e_color = get_element(e_light, "color");
       if (e_color) {
@@ -530,6 +533,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
         exit(EXIT_FAILURE);
       }
     } else if (type == "point") {
+      std::cout << "LIGHT = POINT" << endl;
       light.light_type = LightType::POINT;
       XMLElement* e_color = get_element(e_light, "color");
       XMLElement* e_constant_att = get_element(e_light, "constant_attenuation");
@@ -546,6 +550,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
         exit(EXIT_FAILURE);
       }
     } else if (type == "spot") {
+      std::cout << "LIGHT = SPOT" << endl;
       light.light_type = LightType::SPOT;
       XMLElement* e_color = get_element(e_light, "color");
       XMLElement* e_falloff_deg = e_light->FirstChildElement("falloff_angle");
@@ -687,6 +692,11 @@ void ColladaParser::parse_polymesh(XMLElement* xml, PolymeshInfo& polymesh) {
 
   // polylist
   XMLElement* e_polylist = e_mesh->FirstChildElement("polylist");
+  bool is_triangles = false;
+  if ( !e_polylist ) {
+    e_polylist = e_mesh->FirstChildElement( "triangles" );
+    is_triangles = true;
+  }
   if (e_polylist) {
 
     // input arrays & array offsets
@@ -766,22 +776,26 @@ void ColladaParser::parse_polymesh(XMLElement* xml, PolymeshInfo& polymesh) {
 
     // create polygon size array and compute size of index array
     vector<size_t> sizes; size_t num_indices = 0;
-    XMLElement* e_vcount = e_polylist->FirstChildElement("vcount");
-    if (e_vcount) {
-
-      size_t size;
-      string s = e_vcount->GetText();
-      stringstream ss (s);
-
-      for (size_t i = 0; i < num_polygons; ++i) {
-        ss >> size;
-        sizes.push_back(size);
-        num_indices += size * stride;
+    if ( !is_triangles ) {
+      XMLElement *e_vcount = e_polylist->FirstChildElement("vcount");
+      if ( e_vcount ) {
+        size_t size;
+        string s = e_vcount->GetText();
+        stringstream ss(s);
+        for (size_t i = 0; i < num_polygons; ++i) {
+          ss >> size;
+          sizes.push_back(size);
+          num_indices += size * stride;
+        }
+      } else {
+        stat("Error: polygon sizes undefined in geometry: " << polymesh.id);
+        exit(EXIT_FAILURE);
       }
-
     } else {
-      stat("Error: polygon sizes undefined in geometry: " << polymesh.id);
-      exit(EXIT_FAILURE);
+      for (size_t i = 0; i < num_polygons; ++i) {
+        sizes.push_back(3);
+        num_indices += 3 * stride;
+      }
     }
 
     // index array
@@ -876,7 +890,7 @@ void ColladaParser::parse_material ( XMLElement* xml, MaterialInfo& material ) {
         if (type == "emission") {
           XMLElement *e_radiance  = get_element(e_bsdf, "radiance");
           Vector3D radiance = spectrum_from_string(string(e_radiance->GetText()));
-          BSDF* bsdf = new EmissionBSDF(radiance);
+          BSDF* bsdf = new EmissionBSDF(radiance); // Could set to 0 if u dont want the light to be a color.
           material.bsdf = bsdf;
         } else if (type == "mirror") {
           XMLElement *e_reflectance  = get_element(e_bsdf, "reflectance");
@@ -917,9 +931,13 @@ void ColladaParser::parse_material ( XMLElement* xml, MaterialInfo& material ) {
         e_bsdf = e_bsdf->NextSiblingElement();
       }
     } else if (tech_common) {
-      XMLElement* e_diffuse = get_element(tech_common, "phong/diffuse/color");
-      if (e_diffuse) {
-        Vector3D reflectance = spectrum_from_string(string(e_diffuse->GetText()));
+      XMLElement* e_lambert_diffuse = get_element(tech_common, "lambert/diffuse/color");
+      XMLElement* e_phong_diffuse = get_element(tech_common, "phong/diffuse/color");
+      if (e_lambert_diffuse) {
+        Vector3D reflectance = spectrum_from_string(string(e_lambert_diffuse->GetText()));
+        material.bsdf = new DiffuseBSDF(reflectance);
+      } else if (e_phong_diffuse) {
+        Vector3D reflectance = spectrum_from_string(string(e_phong_diffuse->GetText()));
         material.bsdf = new DiffuseBSDF(reflectance);
       } else {
         material.bsdf = new DiffuseBSDF(Vector3D(.5f,.5f,.5f));

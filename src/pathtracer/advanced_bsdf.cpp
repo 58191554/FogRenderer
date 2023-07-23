@@ -146,11 +146,11 @@ void GlassBSDF::render_debugger_node()
 
 void BSDF::reflect(const Vector3D wo, Vector3D* wi) {
 
-  // TODO:
-  // Implement reflection of wo about normal (0,0,1) and store result in wi.
-  
-
-
+    // TODO:
+    // Implement reflection of wo about normal (0,0,1) and store result in wi.
+    wi->x = -wo.x;
+    wi->y = -wo.y;
+    wi->z = wo.z;
 }
 
 bool BSDF::refract(const Vector3D wo, Vector3D* wi, double ior) {
@@ -160,7 +160,6 @@ bool BSDF::refract(const Vector3D wo, Vector3D* wi, double ior) {
   // Return false if refraction does not occur due to total internal reflection
   // and true otherwise. When dot(wo,n) is positive, then wo corresponds to a
   // ray entering the surface through vacuum.
-
 
 
 

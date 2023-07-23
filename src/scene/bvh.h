@@ -33,6 +33,7 @@ struct BVHNode {
   BBox bb;        ///< bounding box of the node
   BVHNode* l;     ///< left child node
   BVHNode* r;     ///< right child node
+  int depth;      ///< depth of the node in the tree
 
   std::vector<Primitive*>::const_iterator start;
   std::vector<Primitive*>::const_iterator end;
@@ -138,7 +139,7 @@ class BVHAccel : public Aggregate {
 private:
   std::vector<Primitive*> primitives;
   BVHNode* root; ///< root node of the BVH
-  BVHNode *construct_bvh(std::vector<Primitive*>::iterator start, std::vector<Primitive*>::iterator end, size_t max_leaf_size);
+  BVHNode *construct_bvh(std::vector<Primitive*>::iterator start, std::vector<Primitive*>::iterator end, size_t max_leaf_size, int cur_depth);
 };
 
 } // namespace SceneObjects
