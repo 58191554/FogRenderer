@@ -47,7 +47,11 @@ RaytracedRenderer::RaytracedRenderer(size_t ns_aa,
                        bool direct_hemisphere_sample,
                        string filename,
                        double lensRadius,
-                       double focalDistance) {
+                       double focalDistance,
+                       double fogFactor, // Zhen TONG added
+                       bool fogMode  // Zhen TONG added
+
+) {
   state = INIT;
 
   pt = new PathTracer();
@@ -61,6 +65,8 @@ RaytracedRenderer::RaytracedRenderer(size_t ns_aa,
   pt->samplesPerBatch = samples_per_batch;                  // Number of samples per batch
   pt->maxTolerance = max_tolerance;                         // Maximum tolerance for early termination
   pt->direct_hemisphere_sample = direct_hemisphere_sample;  // Whether to use direct hemisphere sampling vs. Importance Sampling
+  pt->fog_factor = fogFactor;
+  pt->fog_effect = fogMode;
 
   this->lensRadius = lensRadius;
   this->focalDistance = focalDistance;
@@ -557,6 +563,28 @@ void RaytracedRenderer::key_press(int key) {
     pt->camera->focalDistance = pt->camera->focalDistance + 0.1;
     fprintf(stdout, "[PathTracer] Camera focal distance increased to %f.\n", pt->camera->focalDistance);
     break;
+  case 70 :                     // 70 is f; Zhen TONG added
+    pt->fog_effect = !pt->fog_effect;
+    if (pt->fog_effect) {
+        fprintf(stdout, "[PathTracer] Change to fog mode\n");
+    }
+    else {
+        fprintf(stdout, "[PathTracer] Change to no fog mode\n");
+    }
+    break;
+  case 71:                      // 71 is g, Zhen TONG added
+      pt->lens_using = !pt->lens_using;
+      if(pt->lens_using) fprintf(stdout, "[PathTracer] Using thin lens camera\n");
+      else fprintf(stdout, "[PathTracer] Using pin-hole camera\n");
+      break;
+  case 81:                      // 81 is q, Zhen TONG added
+      pt->fog_factor -= 0.1;
+      fprintf(stdout, "[PathTracer] Fog factor decreases to  %f.\n", pt->fog_factor); 
+      break;
+  case 87:                      // 81 is w, Zhen TONG added
+      pt->fog_factor += 0.1;
+      fprintf(stdout, "[PathTracer] Fog factor increases to  %f.\n", pt->fog_factor);
+      break;
   case KEYBOARD_UP:
     if (current != bvh->get_root()) {
         selectionHistory.pop();

@@ -1,0 +1,119 @@
+<mxfile host="app.diagrams.net" modified="2023-07-29T16:23:26.495Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="ZPbxkcwpxgA0q8YROy6I" version="21.6.5" type="device">
+  <diagram name="Page-1" id="6quaBx2PNYMab5isuh15">
+    <mxGraphModel dx="2035" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.017;entryY=0.491;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="dFWKXWX0HZvutP3Hf22_-44">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-10" y="479.91857142857145" as="sourcePoint" />
+            <mxPoint x="30" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="20" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-1" value="ray" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="460" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="dFWKXWX0HZvutP3Hf22_-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="480" as="sourcePoint" />
+            <mxPoint x="189.9599999999998" y="430.03999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-7" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.61;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="dFWKXWX0HZvutP3Hf22_-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="480" as="sourcePoint" />
+            <mxPoint x="190" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-8" value="fog itersection with exponential distribution" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="420" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-9" value="BVH intersection" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="500" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-15" value="$$t_{fog}$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="300" y="425" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-17" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;$$t_{i}$$&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="332.5" y="500" width="15" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-28" value="set ray time&amp;nbsp; $$t = \min{\{t_i, t_{fog}\}}$$" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="392.5" y="455" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-29" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="352.5" y="525" as="sourcePoint" />
+            <mxPoint x="392.5" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.61;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="353.5" y="440" as="sourcePoint" />
+            <mxPoint x="392.5" y="484" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dFWKXWX0HZvutP3Hf22_-31" target="dFWKXWX0HZvutP3Hf22_-41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="443" />
+              <mxPoint x="760" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-31" value="add fog lighting sphere estimation&amp;nbsp;&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="420" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-33" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;$$t_i&amp;lt;t_{fog}$$&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="515" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-34" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="512.5" y="483" as="sourcePoint" />
+            <mxPoint x="552.5" y="443" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-35" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.61;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="512.5" y="483" as="sourcePoint" />
+            <mxPoint x="551.5" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="dFWKXWX0HZvutP3Hf22_-36">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-36" value="add fog lighting hemisphere estimation&amp;nbsp;&amp;nbsp;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="497.5" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-37" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;$$t_{fog}&amp;lt;t_i$$&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="410" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-38" value="Importance Sampling" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="570" y="380" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-39" value="Random Sampling" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="332.5" y="260" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dFWKXWX0HZvutP3Hf22_-41" target="dFWKXWX0HZvutP3Hf22_-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-41" value="Set a new ray with random direction.&lt;br&gt;Decrease the ray depth" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="441.25" y="300" width="207.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-44" value="While ray depth&amp;gt;0" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.552;entryY=0.044;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dFWKXWX0HZvutP3Hf22_-46" target="dFWKXWX0HZvutP3Hf22_-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dFWKXWX0HZvutP3Hf22_-46" value="set weight of reflectance with ray direction" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="153.75" y="300" width="176.25" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

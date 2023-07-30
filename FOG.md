@@ -80,3 +80,21 @@ With different g, we can render different effect of fog. From the show case belo
    https://zhuanlan.zhihu.com/p/526598533
 
    https://zhuanlan.zhihu.com/p/56710440
+
+
+
+
+
+
+
+![image-20230727113820683](C:\Users\surface\AppData\Roaming\Typora\typora-user-images\image-20230727113820683.png)
+
+![image-20230727115857241](C:\Users\surface\AppData\Roaming\Typora\typora-user-images\image-20230727115857241.png)
+
+spot light can not use random sample procedure, because the light cannot precisely point to the spot point position. 
+
+​	
+
+![image-20230727173222074](C:\Users\surface\AppData\Roaming\Typora\typora-user-images\image-20230727173222074.png)
+
+![image-20230727173249423](C:\Users\surface\AppData\Roaming\Typora\typora-user-images\image-20230727173249423.png)

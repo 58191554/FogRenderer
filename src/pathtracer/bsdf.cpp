@@ -1,6 +1,7 @@
 #include "bsdf.h"
 #include "bsdf.h"
 #include "bsdf.h"
+#include "bsdf.h"
 
 #include "application/visual_debugger.h"
 
@@ -79,6 +80,35 @@ void DiffuseBSDF::render_debugger_node()
     ImGui::TreePop();
   }
 }
+
+
+Vector3D FogBSDF::f(const Vector3D wo, const Vector3D wi) {
+    return reflectance/4/PI;
+}
+
+Vector3D FogBSDF::sample_f(const Vector3D wo, Vector3D* wi, double* pdf) {
+    //*wi = sampler.get_sample();
+    //double cos_wi_rd = dot(wi->unit(), wo.unit());
+    //*pdf = 1 / (4 * PI) * (1 - phase_factor* phase_factor) / (pow(1 + phase_factor * phase_factor - 2 * phase_factor * cos_wi_rd, 3 / 2));
+    //return f(wo, *wi);
+    double Xi1 = random_uniform();
+    double Xi2 = random_uniform();
+
+    double r = sqrt(Xi1);
+    double theta = 2. * PI * Xi2;
+    if (coin_flip(0.5)) *wi = Vector3D(sqrt(1 - Xi1), r * cos(theta), r * sin(theta));
+    else *wi = Vector3D(-sqrt(1 - Xi1), r * cos(theta), r * sin(theta));
+    *pdf = sqrt(1 - Xi1) / PI/2;
+    return f(wo, *wi);
+}
+
+double FogBSDF::get_HG(const Vector3D wo, Vector3D wi)
+{
+    double cos_wi_rd = dot(wi.unit(), wo.unit());
+    return 1 / (4 * PI) * (1 - phase_factor * phase_factor) / (pow(1 + phase_factor * phase_factor - 2 * phase_factor * cos_wi_rd, 3 / 2)); 
+}
+
+
 
 /**
  * Evalutate Emission BSDF (Light Source)

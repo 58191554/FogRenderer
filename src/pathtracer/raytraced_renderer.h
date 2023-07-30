@@ -74,7 +74,9 @@ public:
              bool direct_hemisphere_sample = false,
              string filename = "",
              double lensRadius = 0.25,
-             double focalDistance = 4.7);
+             double focalDistance = 4.7,
+             double fogFactor = 0,
+             bool fog_effect = false);
 
   /**
    * Destructor.

@@ -65,10 +65,6 @@ Vector3D CosineWeightedHemisphereSampler3D::get_sample(double *pdf) const {
   double theta = 2. * PI * Xi2;
   *pdf = sqrt(1-Xi1) / PI;
   return Vector3D(r*cos(theta), r*sin(theta), sqrt(1-Xi1));
-  //double theta = 2 * PI * Xi2;
-  //double phi = PI * Xi1;
-  //*pdf = 1 / (2 * PI);
-  //return Vector3D(cos(phi) * cos(theta), cos(phi) * sin(theta), sin(phi));
 }
 
 

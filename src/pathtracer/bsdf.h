@@ -98,6 +98,7 @@ class BSDF {
    * scattered.
    */
   virtual bool is_delta() const = 0;
+  virtual bool is_fog();
 
   virtual void render_debugger_node() {};
 
@@ -110,6 +111,11 @@ class BSDF {
    * Refraction helper
    */
   virtual bool refract(const Vector3D wo, Vector3D* wi, double ior);
+
+  /**
+   * Get HG 
+   */
+  virtual double get_HG(Vector3D wo, Vector3D wi);
 
   const HDRImageBuffer* reflectanceMap;
   const HDRImageBuffer* normalMap;
@@ -151,6 +157,26 @@ private:
   CosineWeightedHemisphereSampler3D sampler;
 
 }; // class DiffuseBSDF
+
+//
+//Fog BSDF Zhen TONG added
+//
+class FogBSDF :public BSDF {
+public:
+    FogBSDF(const Vector3D a, double g): reflectance(a), phase_factor(g){}
+    Vector3D f(const Vector3D wo, const Vector3D wi);
+    Vector3D sample_f(const Vector3D wo, Vector3D* wi, double* pdf);
+    Vector3D get_emission() const { return Vector3D(); }
+    bool is_delta() const { return false; }
+    double get_HG(const Vector3D wo, Vector3D wi);
+    bool is_fog();
+
+private:
+    Vector3D reflectance;
+    double phase_factor;
+    UniformSphereSampler3D sampler;
+};// class FogBSDF
+
 
 /**
  * Microfacet BSDF.

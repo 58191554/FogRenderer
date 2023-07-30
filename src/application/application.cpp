@@ -34,7 +34,9 @@ Application::Application(AppConfig config, bool gl) {
     config.pathtracer_direct_hemisphere_sample,
     config.pathtracer_filename,
     config.pathtracer_lensRadius,
-    config.pathtracer_focalDistance
+    config.pathtracer_focalDistance,
+    config.pathtracer_fogFactor,
+    config.pathrracer_fogMode
   );
   filename = config.pathtracer_filename;
 }
@@ -329,6 +331,7 @@ GLScene::SceneLight *Application::init_light(LightInfo& light,
     case Collada::LightType::POINT:
       return new GLScene::PointLight(light, transform);
     case Collada::LightType::SPOT:
+        //std::cout << "light.falloff_angle" << light.falloff_angle << endl;
       return new GLScene::SpotLight(light, transform);
     default:
       break;
@@ -460,6 +463,30 @@ void Application::keyboard_event(int key, int event, unsigned char mods) {
           case 'd': case 'D':
             camera.dump_settings(filename + "_cam_settings.txt");
             break;
+          case 'f': case 'F':               /// Zhen Tong add fog effect
+              renderer->stop();
+              renderer->key_press(key);
+              //std::cout << "key = " << key << endl;
+              renderer->start_raytracing();
+              break;
+          case 'g': case 'G':
+              renderer->stop();
+              renderer->key_press(key);
+              //std::cout << "key = " << key << endl;
+              renderer->start_raytracing();
+              break;
+          case 'q': case'Q':
+              renderer->stop();
+              renderer->key_press(key);
+              //std::cout << "key = " << key << endl;
+              renderer->start_raytracing();
+              break;
+          case 'w': case 'W':
+              renderer->stop();
+              renderer->key_press(key);
+              //std::cout << "key = " << key << endl;
+              renderer->start_raytracing();
+              break;
         }
       }
       break;

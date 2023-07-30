@@ -534,6 +534,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
       }
     } else if (type == "point") {
       std::cout << "LIGHT = POINT" << endl;
+      std::cout << type << endl;
       light.light_type = LightType::POINT;
       XMLElement* e_color = get_element(e_light, "color");
       XMLElement* e_constant_att = get_element(e_light, "constant_attenuation");
@@ -558,6 +559,7 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
       XMLElement* e_constant_att = get_element(e_light, "constant_attenuation");
       XMLElement* e_linear_att = get_element(e_light, "linear_attenuation");
       XMLElement* e_quadratic_att = get_element(e_light, "quadratic_attenuation");
+      XMLElement* e_falloff_angle = get_element(e_light, "falloff_angle");          // Zhen TONG
       if (e_color && e_falloff_deg && e_falloff_exp &&
           e_constant_att && e_linear_att && e_quadratic_att) {
         string color_string = e_color->GetText();
@@ -567,6 +569,8 @@ void ColladaParser::parse_light( XMLElement* xml, LightInfo& light ) {
         light.constant_att = atof(e_constant_att->GetText());
         light.constant_att = atof(e_linear_att->GetText());
         light.constant_att = atof(e_quadratic_att->GetText());
+        light.falloff_angle = atof(e_falloff_angle->GetText());                     // Zhen Tong
+        std::cout << "FALL_ANGLE" << light.falloff_angle << endl;
       } else {
         stat("Error: incomplete definition of spot light: " << light.id);
         exit(EXIT_FAILURE);

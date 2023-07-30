@@ -63,7 +63,8 @@ std::ostream& operator<<(std::ostream& os, const LightInfo& light) {
            << " falloff_exp=" << light.falloff_exp
            << " constant_att="  << light.constant_att
            << " linear_att="    << light.linear_att
-           << " quadratic_att=" << light.quadratic_att;
+           << " quadratic_att=" << light.quadratic_att
+           << " falloff_angle=" << light.falloff_angle;     // Zhen Tong added
         break;
     }
 

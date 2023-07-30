@@ -38,6 +38,7 @@ class LightInfo : public Instance {
   float constant_att;       ///< constant attenuation factor  
   float linear_att;         ///< linear attenuation factor
   float quadratic_att;      ///< quadratic attenuation factor
+  float falloff_angle;      ///< fall of angle factor Zhen TONG added
 
 }; // struct Light
 

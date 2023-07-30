@@ -50,12 +50,16 @@ namespace CGL {
         Vector3D estimate_direct_lighting_hemisphere(const Ray& r, const SceneObjects::Intersection& isect);
         Vector3D estimate_direct_lighting_importance(const Ray& r, const SceneObjects::Intersection& isect);
 
+        Matrix3x3 calculateRotationMatrix(const Vector3D& x);
+
         Vector3D est_radiance_global_illumination(const Ray& r);
         Vector3D zero_bounce_radiance(const Ray& r, const SceneObjects::Intersection& isect);
         Vector3D one_bounce_radiance(const Ray& r, const SceneObjects::Intersection& isect);
         Vector3D at_least_one_bounce_radiance(const Ray& r, const SceneObjects::Intersection& isect);
         Vector3D fog_bounce_radiance(const Ray& r, const SceneObjects::Intersection& isect);
         Vector3D estimate_fog_lighting_sphere(const Ray& r, const SceneObjects::Intersection& isect);
+
+        double sampleInverseExponential(double lambda = 0.2);
         
         Vector3D debug_shading(const Vector3D d) {
             return Vector3D(abs(d.r), abs(d.g), .0).unit();
@@ -82,6 +86,10 @@ namespace CGL {
         size_t samplesPerBatch;
         double maxTolerance;
         bool direct_hemisphere_sample; ///< true if sampling uniformly from hemisphere for direct lighting. Otherwise, light sample
+        bool fog_effect = false;               ///< fog effect will add uniform scatter Zhen TONG
+        bool lens_using = false;               ///< lens_using change lens from pin-hole to lens Zhen TONG
+        double fog_factor = 0;                 ///< fog_factor is the g in the phase function from 
+
 
         // Components //
 

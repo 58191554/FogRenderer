@@ -60,8 +60,13 @@ Vector3D PointLight::sample_L(const Vector3D p, Vector3D* wi,
 // Spot Light //
 
 SpotLight::SpotLight(const Vector3D rad, const Vector3D pos,
-                     const Vector3D dir, double angle) :radiance(rad), position(pos) {
-
+                     const Vector3D dir, double angle) {
+    this->angle = angle;        
+    this->radiance = rad;
+    this->position = pos;
+    this->direction = dir;
+    std::cout << "[SpotLight angle] = " << angle << endl;
+    std::cout << "[SpotLight direction] = " << dir << endl;
 }
 
 Vector3D SpotLight::sample_L(const Vector3D p, Vector3D* wi,
@@ -70,6 +75,13 @@ Vector3D SpotLight::sample_L(const Vector3D p, Vector3D* wi,
     *wi = d.unit();
     *distToLight = d.norm();
     *pdf = 1;
+    // If the angle is too large
+    //std::cout << "Angle" << this->angle << endl;
+    double angle_rad = 0.5 * this->angle / 180 * PI;
+    double cos_in = -dot(direction.unit(), wi->unit());
+    if (cos(angle_rad) > cos_in) {
+        return Vector3D();
+    }
     return radiance;
 }
 

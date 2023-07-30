@@ -62,6 +62,8 @@ struct AppConfig {
     pathtracer_filename = "";
     pathtracer_lensRadius = 0.0;
     pathtracer_focalDistance = 4.7;
+    pathtracer_fogFactor = 0;       ///< Zhen TONG added
+    pathrracer_fogMode = false;     ///< Zhen TONG added
   }
 
   size_t pathtracer_ns_aa;
@@ -84,6 +86,8 @@ struct AppConfig {
 
   double pathtracer_lensRadius;
   double pathtracer_focalDistance;
+  double pathtracer_fogFactor;
+  double pathrracer_fogMode;
 };
 
 class Application : public Renderer {
