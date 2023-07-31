@@ -43,4 +43,4 @@ cd \out\build\x64-Release
 
 ### Rendered Image
 
-![dif_phase.drawio (1)](https://github.com/58191554/FogRenderer/blob/main/images/dif_phase.drawio%20(1).png)https://github.com/58191554/FogRenderer/blob/main/images/dif_phase.drawio%20(1).png)
+![dif_phase.drawio (1)](https://github.com/58191554/FogRenderer/blob/main/images/dif_phase.drawio%20(1).png)
