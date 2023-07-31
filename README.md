@@ -2,7 +2,7 @@
 
 This project implements the fog renderer. To better understand this project, please visit the [website](https://58191554.github.io/fog_renderer.html) for it.
 
-![pipelin1.png](images\pipeline1.png)
+![pipelin1.png]([images\pipeline1.png](https://github.com/58191554/FogRenderer/blob/main/images/pipeline1.png))
 
 ## Run Code
 
