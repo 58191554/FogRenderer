@@ -44,3 +44,6 @@ cd \out\build\x64-Release
 ### Rendered Image
 
 ![dif_phase.drawio (1)](https://github.com/58191554/FogRenderer/blob/main/images/dif_phase.drawio%20(1).png)
+### Contribution
+Thank you cs184 TAs, this project is based on https://github.com/cal-cs184-student p3-1.
+
