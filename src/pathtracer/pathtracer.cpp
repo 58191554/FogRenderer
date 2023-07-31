@@ -214,7 +214,7 @@ Vector3D PathTracer::at_least_one_bounce_radiance(const Ray &r,
     if (flag && r.depth > 0 && coin_flip(random_prob)) {
         if (isect.bsdf->is_fog()) {
             //double HG = isect.bsdf->get_HG(Vector3D(1, 0, 0), w_in);
-            L_out += f * isect.bsdf->get_HG(r.d, new_r.d) * at_least_one_bounce_radiance(new_r, new_isect) / pdf / random_prob;
+            L_out += isect.bsdf->get_HG(r.d, new_r.d) * at_least_one_bounce_radiance(new_r, new_isect) / pdf / random_prob;
             //std::cout << "[w_in]" << w_in << std::endl;
             //std::cout << "[PDF]"<<pdf << std::endl;
             //std::cout << "[HG]" << HG << std::endl;
